@@ -27,12 +27,7 @@ Enemy.prototype.update = function(dt) {
     else {
         this.x = 0;
     }
-    checkCollisions(this);
 };
-
-/*Enemy.prototype.checkCollisions = function(){
-    console.log(this.x);
-};*/
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -49,7 +44,11 @@ class Hero {
         this.y = 400;
     }
     update(){
-
+        allEnemies.forEach(function(enemy){
+            if ((player.x >= (enemy.x -50) && player.x <= (enemy.x + 50)) && (player.y <= enemy.y && player.y >= (enemy.y - 25))){
+                player.y = 0;
+            }
+        });
     };
     render(){
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -81,23 +80,6 @@ let enemyTwo = new Enemy(0,50,100);
 let enemyThree = new Enemy(0,100,200);
 let player = new Hero();
 
-
-function checkCollisions(bug){
-    //console.log(bug);
-    if ((bug.x === player.x) && (bug.y === player.y)){
-        console.log('hit');
-    }
-
-
-   /* allEnemyPositions.forEach(function(bug){
-        let bugXCordLower = bug.x - 50;
-        let bugXCordHigher = bug.x + 50;
-        let bugYCordHigher = bug.y - 25;
-        if ((player.x >= bugXCordLower && player.x <= bugYCordHigher) && (player.y <= bug.y && player.y >= bugYCordHigher)){
-            console.log('hit');
-        }
-    });*/
-};
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
