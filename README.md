@@ -4,7 +4,7 @@
 
 * [Overview](#overview)
 * [Installation](#installation)
-
+* [Gameplay](#gameplay)
 
 ## Overview
 
@@ -17,3 +17,7 @@ When time allows upon the completion of the nanodegree, I plan to return to this
 ## Installation
 
 No installation is required - just play it in your browser here: https://daphnetull.github.io/frontend-nanodegree-arcade-game/
+
+## Gameplay
+
+You must successfully navigate your sprite across the multitude of moving bugs to reach the water.  Touching a bug will send you back to the beginning.  Use the directional arrow keys on your keyboard to move your sprite up, down, left, and right.   
