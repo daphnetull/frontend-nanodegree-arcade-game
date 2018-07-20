@@ -8,7 +8,7 @@
 
 ## Overview
 
-This is my version of Project 3 for Udacity's front-end web development (FEND) nanodegree program.  It is a simple arcade game inspired by the classic game Frogger, where the user must successfully guide their player to the other side without colliding with an enemy.  Bumpting into an enemy and making it to the water sends the player back to the beginning.    
+This is my version of Project 3 for Udacity's front-end web development (FEND) nanodegree program.  It is a simple arcade game inspired by the classic game Frogger, where the user must successfully guide their player to the other side without colliding with an enemy.  Bumping into an enemy and making it to the water sends the player back to the beginning.    
 
 Udacity supplied the [engine.js](js/engine.js) and [resources.js](js/resources.js) files, and some starter code for [app.js](js/app.js).  The purpose of this project is to practice using classes and objects and ultimately to demonstrate knowledge and proficiency in OOJS.
 
