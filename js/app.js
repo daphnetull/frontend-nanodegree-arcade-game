@@ -1,12 +1,10 @@
-// Enemies our player must avoid
+// Enemies our player must avoid, pushed into this array
 let allEnemies = [];
 
+// Enemy class using a constructor function
 var Enemy = function(xpos,ypos,speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
     // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+    // a helper we've provided to easily load images from resources.js
     this.x = xpos;
     this.y = ypos;
     this.sprite = 'images/enemy-bug.png';
@@ -15,12 +13,9 @@ var Enemy = function(xpos,ypos,speed) {
 
 };
 
-// Update the enemy's position, required method for game
+// Updates the enemy's position, required method for game
 // Parameter: dt,   time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
    if(this.x < 500){
         this.x += this.speed * dt;
     }
@@ -29,31 +24,36 @@ Enemy.prototype.update = function(dt) {
     }
 };
 
-// Draw the enemy on the screen, required method for game
+// Draws the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
+// The Hero class using class keyword
+// Contains an update(), render() and
 // a handleInput() method.
 class Hero {
     constructor(){
-        this.sprite = 'images/char-cat-girl.png';
-        this.x = 200;
-        this.y = 400;
+        this.sprite = 'images/char-cat-girl.png'; // the sprite image file
+        this.x = 200; // starting x coordinate
+        this.y = 400; // stating y coordinate
     }
     update(){
-        allEnemies.forEach(function(enemy){
+        allEnemies.forEach(function(enemy){ // this is used to check for a collision with an enemy
             if ((player.x >= (enemy.x -50) && player.x <= (enemy.x + 50)) && (player.y <= enemy.y && player.y >= (enemy.y - 25))){
-                player.y = 0;
+                player.y = 400;
+                player.x = 200;
             }
         });
+        if (this.y === 0){ // if player makes it to the water
+            this.x = 200;
+            this.y = 400;
+        }
     };
-    render(){
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    render(){ // this draws the image, selecting it from the 'sprite' property in the Hero constructor
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y); 
     };
-    handleInput(key){
+    handleInput(key){ // this is what actually makes the player dependingon user input
         if (key === 'left' && this.x > 0){
           this.x -= 25;
         }
@@ -71,13 +71,15 @@ class Hero {
 
 
 
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+// Instances of Enemy objects
 
 let enemyOne = new Enemy(100,200,50);
 let enemyTwo = new Enemy(0,50,100);
 let enemyThree = new Enemy(0,100,200);
+let enemyFour = new Enemy(0,125,400);
+let enemyFive = new Enemy(0,75,300);
+
+// Instance of the Hero object, called player
 let player = new Hero();
 
 
