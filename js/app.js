@@ -39,10 +39,11 @@ class Hero {
         this.y = 400; // stating y coordinate
     }
     update(){
-        allEnemies.forEach(function(enemy){ // this is used to check for a collision with an enemy
-            if ((player.x >= (enemy.x -50) && player.x <= (enemy.x + 50)) && (player.y <= enemy.y && player.y >= (enemy.y - 25))){
-                player.y = 400;
-                player.x = 200;
+        self = this;
+        allEnemies.forEach(function(enemy){ // checks for a collision with an enemy
+            if ((self.x >= (enemy.x -50) && self.x <= (enemy.x + 50)) && (self.y <= enemy.y && self.y >= (enemy.y - 25))){
+                self.y = 400;
+                self.x = 200;
             }
         });
         if (this.y === 0){ // if player makes it to the water
