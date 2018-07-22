@@ -18,7 +18,7 @@ When time allows upon the completion of the nanodegree, I plan to return to this
 
 No installation is required - just play it in your browser here: https://daphnetull.github.io/frontend-nanodegree-arcade-game/
 
-To play this game locally, you'll want to download it, extract it to a folder, and run [index.htmml](index.html) in your browser.  
+To play this game locally, you'll want to download it, extract it to a folder, and run [index.html](index.html) in your browser.  
 
 ## Gameplay
 
