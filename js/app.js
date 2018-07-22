@@ -1,33 +1,34 @@
 // Enemies our player must avoid, pushed into this array
 let allEnemies = [];
 
-// Enemy class using a constructor function
-var Enemy = function(xpos,ypos,speed) {
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images from resources.js
-    this.x = xpos;
-    this.y = ypos;
-    this.sprite = 'images/enemy-bug.png';
-    this.speed = speed;
-    allEnemies.push(this);
 
-};
-
-// Updates the enemy's position, required method for game
-// Parameter: dt,   time delta between ticks
-Enemy.prototype.update = function(dt) {
-   if(this.x < 500){
-        this.x += this.speed * dt;
+// The Enemy class using class keyword
+// Contains an update() and render() method
+class Enemy {
+    constructor(xpos,ypos,speed){
+        // The image/sprite for our enemies, this uses
+        // a helper we've provided to easily load images from resources.js
+        this.x = xpos;
+        this.y = ypos;
+        this.sprite = 'images/enemy-bug.png';
+        this.speed = speed;
+        allEnemies.push(this);
     }
-    else {
-        this.x = 0;
+    // Updates the enemy's position, required method for game
+    // Parameter: dt,   time delta between ticks
+    update(dt){
+        if(this.x < 500){
+            this.x += this.speed * dt;
+        }
+        else {
+            this.x = 0;
+        } 
     }
-};
-
-// Draws the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+    // Draws the enemy on the screen, required method for game
+    render(){
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+}
 
 // The Hero class using class keyword
 // Contains an update(), render() and
@@ -41,7 +42,7 @@ class Hero {
     update(){
         self = this;
         allEnemies.forEach(function(enemy){ // checks for a collision with an enemy
-            if ((self.x >= (enemy.x -50) && self.x <= (enemy.x + 50)) && (self.y <= enemy.y && self.y >= (enemy.y - 25))){
+            if ((self.x >= (enemy.x -50) && self.x <= (enemy.x + 50)) && (self.y <= (enemy.y + 50) && self.y >= (enemy.y - 25))){
                 self.y = 400;
                 self.x = 200;
             }
